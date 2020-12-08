@@ -33,8 +33,6 @@ const initialMood = 'Not sure how I feel';
 const happyMood = 'Quite happy!';
 const sadMood = 'Rather sad';
 
-console.log('sanity check');
-
 export default function Moods() {
   /* STEP 1 */
   const [mood, setMood] = useState(initialMood);
