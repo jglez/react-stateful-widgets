@@ -1,5 +1,4 @@
-/*
-INPUT Instructions
+/* INPUT Instructions
 
 Watch this short video:
 https://tk-assets.lambdaschool.com/a664dfe7-2dde-48d1-8fa2-48066d98e515_input.gif
@@ -11,57 +10,67 @@ Yup, a single slice of state is enough! In it we'll keep track of the value of t
 Whether the text shows royalblue or crimson can be derived from the length of the value of the input.
 
 STEP 0:
-  Study the component below, and import the state hook.
+  Study the component below, and import the state hook. --------------------------------------------------------> DONE
 
 STEP 1:
-  Create a slice of state called 'inputValue' and its 'setInputValue' buddy.
+  Create a slice of state called 'inputValue' and its 'setInputValue' buddy. -----------------------------------> DONE
   We should initialize this state to the empty string.
 
 STEP 2:
-  Make the color of the text be crimson if the length of 'inputValue' goes over ten.
+  Make the color of the text be crimson if the length of 'inputValue' goes over ten. ---------------------------> DONE
 
 STEP 3:
-  Interpolate the value of the input inside this <div />. How can we make it show in ALL CAPS?
+  Interpolate the value of the input inside this <div />. How can we make it show in ALL CAPS? -----------------> DONE
 
 STEP 4:
-  Set the value of the input -found inside the event object- into state.
+  Set the value of the input -found inside the event object- into state. ---------------------------------------> DONE
 
 STEP 5:
-  Set the input value in state to be empty string. The reset still won't work, though! See the next step.
+  Set the input value in state to be empty string. The reset still won't work, though! See the next step. ------> DONE
 
 STEP 6:
-  For the input to reset correctly, it needs to "drink" its value from state!
-  We need to add an extra prop to the <input /> element like so: value={inputValue}
-*/
+  For the input to reset correctly, it needs to "drink" its value from state! ----------------------------------> DONE
+  We need to add an extra prop to the <input /> element like so: value={inputValue} */
 
-import React from 'react'; /* STEP 0 */
+import React from 'react'; 
+import { useState } from 'react'; /* STEP 0 */
 
 export default function Input() {
   /* STEP 1 */
+  const [inputValue, setInputValue] = useState('');
 
   const changeInput = evt => {
     // When the input changes, its whole value can be found inside the event object.
     // Log out the synthetic event object 'evt' and see for yourself.
     const { value } = evt.target;
-
     /* STEP 4 */
+    setInputValue(value)
   };
   const reset = () => {
     /* STEP 5 */
+    setInputValue('')
   };
 
   const style = {
     fontSize: '1.5em',
     marginBottom: '0.3em',
-    color: 'royalblue', /* STEP 2 */
+    textTransform: 'uppercase',
+    /* STEP 2 */
+    color: (inputValue.length <= 10) ? 'royalblue' : 'crimson'
   };
 
   return (
     <div className='widget-input container'>
       <h2>Input</h2>
-      <div id='output' style={style}></div> {/* STEP 3 */}
+
+      {/* STEP 3 */}
+      <div id='output' style={style}>
+        {inputValue}
+      </div>
+
       <div>
-        <input id='input' type='text' onChange={changeInput} /> {/* STEP 6 */}
+        {/* STEP 6: We reset our div#output with step 5, but we need to reset our text input by setting its value equal to inputValue for when we press the Reset button*/}
+        <input id='input' type='text' onChange={changeInput} value={inputValue} /> 
         <button id='resetInput' onClick={reset}>Reset</button>
       </div>
     </div>
