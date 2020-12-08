@@ -24,7 +24,7 @@ STEP 3:
   Remove the hard-coded mood and interpolate the 'mood' slice of state instead, using curly brackets. ---------------> DONE
 
 STEPS 4, 5, 6:
-  Inside these click handlers set the correct mood, using 'setMood' and the variables below the imports. */
+  Inside these click handlers set the correct mood, using 'setMood' and the variables below the imports. ------------> DONE */
 
 import React from 'react'; 
 import { useState } from 'react'; /* STEP 0 */
